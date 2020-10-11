@@ -54,9 +54,10 @@ import axios from "axios";
     },
     watch: {  
       movieSearch(newSearch){
+        console.log(process.env.VUE_APP_API_KEY)
         this.movies = [],
         axios
-        .get(`https://api.themoviedb.org/3/search/movie?api_key=bfd2d477b0c1fbc2d3d3d8010c1ddb71&language=en-US&query=${newSearch}`)
+        .get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.VUE_APP_APIKEY}&language=en-US&query=${newSearch}`)
         .then(res => {   
           this.movies.push(res.data.results)
         });
