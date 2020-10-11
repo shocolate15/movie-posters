@@ -3,11 +3,8 @@
     <v-text-field
       v-model="movieSearch"
       class="mx-4"
-      label="Enter Movie"
+      label="Search Movie Posters"
     ></v-text-field>
-    <v-btn @click="getPosters()"> 
-      Search
-    </v-btn>
     <v-container fluid>
       <v-row dense>
         <v-col
@@ -42,16 +39,7 @@ import axios from "axios";
       movies: [],
       
     }),
-    methods: {
-      getPosters() {
-        this.movies = [],
-        axios
-        .get(`https://api.themoviedb.org/3/search/movie?api_key=bfd2d477b0c1fbc2d3d3d8010c1ddb71&language=en-US&query=${this.movieSearch}`)
-        .then(res => {   
-          this.movies.push(res.data.results)
-        });
-      },
-    },
+    
     watch: {  
       movieSearch(newSearch){
         console.log(process.env.VUE_APP_API_KEY)
